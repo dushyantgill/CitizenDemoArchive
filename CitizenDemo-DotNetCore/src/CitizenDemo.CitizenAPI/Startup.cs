@@ -10,6 +10,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Options;
+using OpenTelemetry;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using Prometheus;
 using System;
 using System.Collections.Generic;
@@ -60,6 +63,18 @@ namespace CitizenDemo.CitizenAPI
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
+
+            var serviceName = "CitizenDemo.CitizenAPI";
+            services.AddOpenTelemetry()
+                .WithTracing(builder => builder
+                    .SetResourceBuilder(ResourceBuilder
+                        .CreateDefault()
+                        .AddService(serviceName: serviceName))
+                    .AddOtlpExporter(options => options
+                        .Endpoint = new Uri(Configuration.GetSection("MonitoringSettings")["TraceExportEndpoint"]))
+                    .AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation())
+                .StartWithHost();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

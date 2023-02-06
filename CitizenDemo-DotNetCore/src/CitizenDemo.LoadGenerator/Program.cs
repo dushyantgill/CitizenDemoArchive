@@ -4,6 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
+using OpenTelemetry;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +65,17 @@ namespace CitizenDemo.LoadGenerator
                     //CitizenSync calls CitizenAPI to create, delete, and search citizens
                     CitizenServiceSettings citizenServiceSettings = configuration.GetSection("CitizenServiceSettings").Get<CitizenServiceSettings>();
                     services.AddSingleton(citizenServiceSettings);
+
+                    var serviceName = "CitizenDemo.LoadGenerator";
+                    services.AddOpenTelemetry()
+                        .WithTracing(builder => builder
+                            .SetResourceBuilder(ResourceBuilder
+                                .CreateDefault()
+                                .AddService(serviceName: serviceName))
+                            .AddOtlpExporter(options => options
+                                .Endpoint = new Uri(configuration.GetSection("MonitoringSettings")["TraceExportEndpoint"]))
+                            .AddHttpClientInstrumentation())
+                        .StartWithHost();
 
                     services.AddHostedService<Worker>();
                 });
