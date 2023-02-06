@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Options;
+using Prometheus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +70,10 @@ namespace CitizenDemo.CitizenAPI
             }
 
             app.UseRouting();
+
+            app.UseMetricServer();
+
+            app.UseHttpMetrics();
 
             app.UseCors("MyPolicy");
 

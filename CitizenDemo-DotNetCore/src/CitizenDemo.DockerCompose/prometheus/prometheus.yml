@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  scrape_timeout: 10s # scrape_timeout - global default is 10s.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+scrape_configs:
+  - job_name: "citizendemo.citizenapi"
+    metrics_path: /metrics
+    scheme: http
+    honor_timestamps: true
+    honor_labels: true
+    static_configs:
+      - targets: ['host.docker.internal:5001']
+  - job_name: "citizendemo.resourceapi"
+    metrics_path: /metrics
+    scheme: http
+    honor_timestamps: true
+    honor_labels: true
+    static_configs:
+      - targets: ['host.docker.internal:6001']

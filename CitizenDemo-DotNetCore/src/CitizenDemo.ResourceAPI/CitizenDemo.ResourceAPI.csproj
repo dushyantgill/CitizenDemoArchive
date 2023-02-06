@@ -10,6 +10,8 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 		<PackageReference Include="MongoDB.Driver" Version="2.19.0" />
+		<PackageReference Include="prometheus-net" Version="7.0.0" />
+		<PackageReference Include="prometheus-net.AspNetCore" Version="7.0.0" />
 	</ItemGroup>
 
 </Project>
