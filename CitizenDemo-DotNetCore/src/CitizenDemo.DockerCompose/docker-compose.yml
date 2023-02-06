@@ -51,3 +51,15 @@ services:
       - "9090:9090"
     volumes:
       - ./prometheus:/etc/prometheus
+  grafana:
+    image: grafana/grafana
+    container_name: Grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=CITIZENDEMO
+      - GF_SECURITY_ADMIN_PASSWORD=CITIZENDEMO
+    volumes:
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/dashboards:/var/lib/grafana/dashboards

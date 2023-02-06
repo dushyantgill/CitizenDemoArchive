@@ -8,6 +8,9 @@
   <ItemGroup>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
+    <None Include="grafana\dashboards\CitizenDemo.json" />
+    <None Include="grafana\dashboards\dashboard.yml" />
+    <None Include="grafana\datasources\datasource.yml" />
     <None Include="prometheus\prometheus.yml" />
   </ItemGroup>
 </Project>
