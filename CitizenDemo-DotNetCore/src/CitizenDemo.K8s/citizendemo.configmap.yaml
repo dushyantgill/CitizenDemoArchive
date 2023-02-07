@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: citizendemo-configmap
+  namespace: citizendemo
+data:
+  COLLECTOR_OTLP_ENABLED: 'true'

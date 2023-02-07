@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+  namespace: citizendemo
+  labels:
+    app: jaeger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaeger
+  template:
+    metadata:
+      namespace: citizendemo
+      labels:
+        app: jaeger
+    spec:
+      containers:
+      - name: jaeger
+        image: jaegertracing/all-in-one:latest
+        ports:
+          - containerPort: 16686
+          - containerPort: 4317
+        env:          
+          - name: COLLECTOR_OTLP_ENABLED
+            valueFrom:
+              configMapKeyRef:
+                name: citizendemo-configmap
+                key: COLLECTOR_OTLP_ENABLED       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger
+  namespace: citizendemo
+  labels:
+    app: jaeger
+spec:
+  selector:
+    app: jaeger
+  type: LoadBalancer
+  ports:
+    - name: web
+      protocol: TCP
+      port: 16686
+      targetPort: 16686
+    - name: traces
+      protocol: TCP
+      port: 4317
+      targetPort: 4317

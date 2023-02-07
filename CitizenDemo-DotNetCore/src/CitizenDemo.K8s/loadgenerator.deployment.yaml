@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loadgenerator
+  namespace: citizendemo
+  labels:
+    app: loadgenerator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loadgenerator
+  strategy: 
+    type: Recreate
+  template:
+    metadata:
+      name: loadgenerator
+      namespace: citizendemo
+      labels:
+        app: loadgenerator
+    spec:
+      containers:
+        - name: loadgenerator
+          image: citizendemoacreastus.azurecr.io/citizendemo/loadgenerator:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 400Mi

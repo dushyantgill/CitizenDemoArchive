@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: citizenapi
+  namespace: citizendemo
+  labels:
+    app: citizenapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: citizenapi
+  strategy: 
+    type: Recreate
+  template:
+    metadata:
+      name: citizenapi
+      namespace: citizendemo
+      labels:
+        app: citizenapi
+    spec:
+      containers:
+        - name: citizenapi
+          image: citizendemoacreastus.azurecr.io/citizendemo/citizenapi:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: 400Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: citizenapi
+  namespace: citizendemo
+  labels:
+    app: citizenapi
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    app: citizenapi

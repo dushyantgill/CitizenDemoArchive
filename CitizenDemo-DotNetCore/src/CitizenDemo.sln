@@ -11,6 +11,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CitizenDemo.LoadGenerator",
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "CitizenDemo.DockerCompose", "CitizenDemo.DockerCompose\CitizenDemo.DockerCompose.dcproj", "{3A092210-FFCB-4170-82A8-581FD35A2D79}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CitizenDemo.K8s", "CitizenDemo.K8s", "{77A639A3-83C2-4EB0-BAAF-8BFDD56F6F75}"
+	ProjectSection(SolutionItems) = preProject
+		CitizenDemo.K8s\build.sh = CitizenDemo.K8s\build.sh
+		CitizenDemo.K8s\citizenapi.deployment.yaml = CitizenDemo.K8s\citizenapi.deployment.yaml
+		CitizenDemo.K8s\citizendemo.configmap.yaml = CitizenDemo.K8s\citizendemo.configmap.yaml
+		CitizenDemo.K8s\citizendemo.ns.yaml = CitizenDemo.K8s\citizendemo.ns.yaml
+		CitizenDemo.K8s\deploy.sh = CitizenDemo.K8s\deploy.sh
+		CitizenDemo.K8s\loadgenerator.deployment.yaml = CitizenDemo.K8s\loadgenerator.deployment.yaml
+		CitizenDemo.K8s\jaeger.deployment.yaml = CitizenDemo.K8s\jaeger.deployment.yaml
+		CitizenDemo.K8s\resourceapi.deployment.yaml = CitizenDemo.K8s\resourceapi.deployment.yaml
+		CitizenDemo.K8s\teardown.sh = CitizenDemo.K8s\teardown.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
