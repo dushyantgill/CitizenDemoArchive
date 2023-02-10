@@ -1,0 +1,19 @@
+scrape_configs:
+- job_name: "citizendemo.citizenapi"
+  scheme: http
+  scrape_interval: 60s
+  kubernetes_sd_configs:
+  - role: pod
+  relabel_configs:
+  - source_labels: [__meta_kubernetes_pod_label_app]
+    action: keep
+    regex: "citizenapi"
+- job_name: "citizendemo.resourceapi"
+  scheme: http
+  scrape_interval: 60s
+  kubernetes_sd_configs:
+  - role: pod
+  relabel_configs:
+  - source_labels: [__meta_kubernetes_pod_label_app]
+    action: keep
+    regex: "resourceapi"

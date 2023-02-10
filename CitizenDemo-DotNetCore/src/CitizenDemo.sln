@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CitizenDemo.K8s", "CitizenD
 		CitizenDemo.K8s\deploy.sh = CitizenDemo.K8s\deploy.sh
 		CitizenDemo.K8s\loadgenerator.deployment.yaml = CitizenDemo.K8s\loadgenerator.deployment.yaml
 		CitizenDemo.K8s\jaeger.deployment.yaml = CitizenDemo.K8s\jaeger.deployment.yaml
+		CitizenDemo.K8s\prometheus-config = CitizenDemo.K8s\prometheus-config
 		CitizenDemo.K8s\resourceapi.deployment.yaml = CitizenDemo.K8s\resourceapi.deployment.yaml
 		CitizenDemo.K8s\teardown.sh = CitizenDemo.K8s\teardown.sh
 	EndProjectSection

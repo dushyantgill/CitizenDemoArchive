@@ -14,3 +14,5 @@ kubectl apply -f citizenapi.deployment.yaml
 kubectl apply -f loadgenerator.deployment.yaml
 
 kubectl get all -n citizendemo
+
+kubectl create configmap ama-metrics-prometheus-config --from-file=prometheus-config -n kube-system
