@@ -52,6 +52,8 @@ namespace CitizenDemo.CitizenAPI
 
             services.AddControllers();
 
+            services.AddApplicationInsightsTelemetry();
+
             //CitizenAPI enables CORS
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
