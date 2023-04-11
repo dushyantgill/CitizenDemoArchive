@@ -1,12 +1,12 @@
-﻿{
+{
   "profiles": {
     "CitizenDemo.CitizenAPI": {
       "commandName": "Project",
+      "applicationUrl": "http://localhost:5001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "dotnetRunMessages": "true",
-      "applicationUrl": "http://localhost:5001"
+      "dotnetRunMessages": "true"
     }
   }
 }
