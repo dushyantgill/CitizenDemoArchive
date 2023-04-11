@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: CitizenDemo-MongoDatabase
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=CITIZENDEMO
+      - MONGO_INITDB_ROOT_PASSWORD=CITIZENDEMO
+    ports:
+      - "27018:27017"
+  citizendemo.resourceapi:
+    container_name: CitizenDemo-ResourceAPI
+    depends_on:
+      - mongodb
+    ports:
+      - "6001:80"
+    environment:
+      - "ASPNETCORE_ENVIRONMENT:Docker"
+    build:
+      context: ../
+      dockerfile: CitizenDemo.ResourceAPI/Dockerfile
+  citizendemo.citizenapi:
+    container_name: CitizenDemo-CitizenAPI
+    depends_on:
+      - mongodb
+      - citizendemo.resourceapi
+    ports:
+      - "5001:80"
+    environment:
+      - "ASPNETCORE_ENVIRONMENT:Docker"
+    build:
+      context: ../
+      dockerfile: CitizenDemo.CitizenAPI/Dockerfile
+  citizendemo.syncworker:
+    container_name: CitizenDemo-LoadGenerator
+    depends_on:
+      - citizendemo.citizenapi
+      - citizendemo.resourceapi
+    environment:
+      - "ASPNETCORE_ENVIRONMENT:Docker"
+    build:
+      context: ../
+      dockerfile: CitizenDemo.LoadGenerator/Dockerfile

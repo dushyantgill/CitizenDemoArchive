@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CitizenDemo.ResourceAPI", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CitizenDemo.LoadGenerator", "CitizenDemo.LoadGenerator\CitizenDemo.LoadGenerator.csproj", "{732F858A-5015-4ED1-AF8A-9325B845CA3F}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "CitizenDemo.DockerCompose", "CitizenDemo.DockerCompose\CitizenDemo.DockerCompose.dcproj", "{3A092210-FFCB-4170-82A8-581FD35A2D79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{732F858A-5015-4ED1-AF8A-9325B845CA3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{732F858A-5015-4ED1-AF8A-9325B845CA3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{732F858A-5015-4ED1-AF8A-9325B845CA3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A092210-FFCB-4170-82A8-581FD35A2D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A092210-FFCB-4170-82A8-581FD35A2D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A092210-FFCB-4170-82A8-581FD35A2D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A092210-FFCB-4170-82A8-581FD35A2D79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
