@@ -1,0 +1,4 @@
+FROM maven
+COPY ./ ./
+RUN mvn clean package
+CMD ["java", "-jar", "target/loadgenerator-0.0.1-SNAPSHOT.jar"]

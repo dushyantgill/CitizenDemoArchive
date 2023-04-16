@@ -15,6 +15,7 @@ public class Resource {
         this.name = name;
         this.status = status;
     }
+
     public String toJSONString() {
         return "{" +
                 "\"resourceId\":\"" + this.resourceId + "\"," +

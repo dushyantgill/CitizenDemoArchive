@@ -117,7 +117,7 @@ namespace CitizenDemo.LoadGenerator
                         }
                     }
 
-                    // every minute, delete 30 citizens
+                    // every minute, delete 15 citizens
                     if (_executionCount % 60 == 0)
                     {
                         for (var count = 0; count < 15; count++)

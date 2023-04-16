@@ -11,13 +11,14 @@ import org.springframework.web.client.RestTemplate;
 
 public class ResourceService {
     private static RestTemplate restTemplate = new RestTemplate();
-    public static void ProvisionDefaultResource (Citizen citizen, String resourceServiceURL) {
+
+    public static void ProvisionDefaultResource(Citizen citizen, String resourceServiceURL) {
         Resource resource = new Resource(
                 java.util.UUID.randomUUID().toString(),
                 citizen.citizenId,
                 "Stimulus 2021H2",
                 "New"
-                );
+        );
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> request = new HttpEntity<String>(resource.toJSONString(), headers);
@@ -25,7 +26,7 @@ public class ResourceService {
         restTemplate.postForObject(resourceServiceURL, request, String.class);
     }
 
-    public static void DeprovisionAllResources (Citizen citizen, String resourceServiceURL) {
+    public static void DeprovisionAllResources(Citizen citizen, String resourceServiceURL) {
         restTemplate.delete(resourceServiceURL + "?citizenId=" + citizen.citizenId);
     }
 }

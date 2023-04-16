@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="CitizenDemo" type="CompoundRunConfigurationType">
+    <toRun name="CitizenAPIApplication" type="Application" />
+    <toRun name="LoadGeneratorApplication" type="Application" />
+    <toRun name="ResourceAPIApplication" type="Application" />
+    <method v="2" />
+  </configuration>
+</component>

@@ -5,8 +5,8 @@ services:
     image: mongo
     container_name: CitizenDemo-MongoDatabase
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=CITIZENDEMO
-      - MONGO_INITDB_ROOT_PASSWORD=CITIZENDEMO
+      - MONGO_INITDB_ROOT_USERNAME=citizendemo
+      - MONGO_INITDB_ROOT_PASSWORD=citizendemo
     ports:
       - "27018:27017"
   citizendemo.resourceapi:

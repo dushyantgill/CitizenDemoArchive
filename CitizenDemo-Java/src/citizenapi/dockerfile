@@ -1,0 +1,5 @@
+FROM maven
+COPY ./ ./
+RUN mvn clean package
+EXPOSE 5001
+CMD ["java", "-jar", "target/citizenapi-0.0.1-SNAPSHOT.jar"]

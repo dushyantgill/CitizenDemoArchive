@@ -1,0 +1,39 @@
+version: '3.4'
+services:
+  mongodb:
+    image: mongo
+    container_name: citizendemo-mongodatabase
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=citizendemo
+      - MONGO_INITDB_ROOT_PASSWORD=citizendemo
+    ports:
+      - "27018:27017"
+  citizendemo.resourceapi:
+    image: citizendemo-resourceapi:v1
+    container_name: citizendemo-resourceapi
+    depends_on:
+      - mongodb
+    build:
+      context: ../resourceapi
+      dockerfile: dockerfile
+    ports:
+      - "6001:6001"
+  citizendemo.citizenapi:
+    image: citizendemo-citizenapi:v1
+    container_name: citizendemo-citizenapi
+    depends_on:
+      - mongodb
+      - citizendemo.resourceapi
+    build:
+      context: ../citizenapi
+      dockerfile: dockerfile
+    ports:
+      - "5001:5001"
+  citizendemo.loadgenerator:
+    image: citizendemo-loadgenerator:v1
+    container_name: citizendemo-loadgenerator
+    depends_on:
+      - citizendemo.citizenapi
+    build:
+      context: ../loadgenerator
+      dockerfile: dockerfile
